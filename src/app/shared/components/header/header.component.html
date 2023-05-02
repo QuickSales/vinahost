@@ -1,0 +1,103 @@
+
+
+
+
+<header class="top-menu">
+    <div class="container top-menu-brand px-0">
+
+        <ul class="nav list-unstyled align-items-center">
+            <li><a href="tel:+(123)678-8767" class="nav-link d-flex"><i
+                        class="bi bi-headset me-2"></i>24x7 Technical Support</a></li>
+            <li>
+                <a href="mailto:john@gmail.com" class="nav-link"><i class="bi bi-envelope-plus me-2"></i>john@gmail.com</a>
+            </li>
+        </ul>
+
+        <ul class="nav list-unstyled align-items-center">
+            <li>
+                <a href="javascript:void(0);" class="nav-link"><i class="bi bi-question-circle me-2"></i>Help</a>
+            </li>
+            <li>
+                <a  class="nav-link d-flex"><i class="bi bi-person me-2"></i>Contact</a>
+            </li>
+        </ul>
+    </div>
+  </header>
+        <header class="main-header" id="stickyHeader" [ngClass]="{ 'sticky-header': scrolled }">
+
+            <!-- Start::main-brand-header -->
+            <div class="main-brand-header">
+                <div class="container brand-header-container">
+                    <div class="d-flex align-items-center">
+                        <!-- Start::header-element -->
+                        <div class="header-element me-1">
+                            <!-- Start::header-link -->
+                            <a href="javascript:void(0);" class="sidemenu-toggle1 header-link" data-bs-toggle="sidebar" (click)="toggleSidebar('open')">
+                                <span class="open-toggle">
+                                    <i class="bi bi-text-indent-left header-link-icon"></i>
+                                </span>
+                            </a>
+                            <!-- End::header-link -->
+                        </div>
+                        <!-- End::header-element -->
+                        <a routerLink="/home/home" class="brand-main">
+                            <img src="./assets/images/brand/logo-white.png" alt="img" class="desktop-logo logo-dark">
+                            <img src="./assets/images/brand/toggle-dark.png" alt="img" class="mobile-logo mobile-dark mx-3">
+                            <img src="./assets/images/brand/logo-color.png" alt="img" class="desktop-logo logo-color">
+                            <img src="./assets/images/brand/toggle-color.png" alt="img" class="mobile-logo mobile-color">
+                        </a>
+
+                        <ul class="categories-dropdowns" >
+                            <li class="category-dropdown px-2 py-3">
+                                <a aria-label="true" class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 categorydropdown"  >
+                                    <i class="bi bi-grid text-white"></i>
+                                </a>
+
+                                <ul  class="main-dropdown d-none"  id="dropdown-toggle"  >
+                                    <li  *ngFor="let dropdownItem of dropdownItems">
+                                        <div  class="categories-dropdowns__item" *ngIf="dropdownItem.type === 'sub'"  [ngClass]="{'is-expanded': dropdownItem.active}">
+                                            <a
+                                            (click)="toggleNavActivedropdown(dropdownItem)"
+                                            [ngClass]="{'active': dropdownItem.active}"
+                                            >
+                                         <span class="me-1"><i class="bi bi-{{dropdownItem.icon}}"></i></span>
+                                             {{dropdownItem.title}}
+                                            <span class="float-end"><i class="bi bi-chevron-right tx-11"></i></span>
+                                        </a>
+                                        </div>
+
+                                        <ul class="category-menu" [ngClass]="{'close': dropdownItem.active}">
+                                            <li *ngFor="let child1 of dropdownItem.children" ><a routerLink="{{child1.path}}" class="category-item">{{child1.title}}</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="nav list-unstyled align-items-center">
+                        <li class="d-flex align-items-center position-relative me-md-4 me-2">
+                            <a href="tel:+1236789657" class="stretched-link"></a>
+                            <span class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2"><i class="bi bi-telephone text-white"></i></span>
+                            <div class="d-none d-md-block">
+                                <a href="javascript:void(0);" class="nav-link tx-15 p-0">Call to Us</a>
+                                <a href="tel:+1236789657" class="mb-0 nav-link p-0 tx-13 op-8 lh-sm">+123 678 9657</a>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-center position-relative">
+                            <a id="live-chat" href="javascript:void(0);" class="stretched-link"></a>
+                            <span class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2"><i class="bi bi-chat-text text-white"></i></span>
+                            <div class="d-none d-md-block">
+                                <a href="javascript:void(0);" class="nav-link tx-15 p-0">Live Chat</a>
+                                <p class="mb-0 nav-link p-0 tx-13 op-8 lh-sm">Chat With Us</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- End::main-brand-header -->
+
+        </header>
+

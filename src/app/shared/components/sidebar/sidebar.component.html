@@ -1,0 +1,156 @@
+
+
+
+
+<div class="sticky" [ngClass]="{ 'sticky-pin': scrolled }">
+
+  <!-- Start::app-sidebar -->
+  <aside class="app-sidebar" id="sidebar">
+
+    <div class="app-toggle-header">
+      <div class="header-element">
+          <!-- Start::header-link -->
+          <a aria-label="true" class="sidemenu-toggle header-link" data-bs-toggle="sidebar">
+              <span class="close-toggle" (click)="sidebarClose('close')">
+                  <i class="bi bi-x header-link-icon"></i>
+              </span>
+          </a>
+          <!-- End::header-link -->
+      </div>
+      <!-- End::header-element -->
+      <a routerLink="/home/home" class="brand-main">
+          <img src="./assets/images/brand/logo-white.png" alt="img" class="desktop-logo logo-dark">
+          <img src="./assets/images/brand/logo-color.png" alt="img" class="desktop-logo logo-color">
+      </a>
+  </div>
+
+
+      <!-- Start::main-sidebar -->
+      <div class="main-sidebar container" id="sidebar-scroll">
+
+
+
+          <!-- Start::nav -->
+          <nav class="main-menu-container nav sub-open">
+            <ul class="main-menu">
+              <!-- 1st Level Menu -->
+              <li class="slide has-sub" *ngFor="let firstlayer of menuItems"
+              >
+
+                <div *ngIf="firstlayer.title != undefined ; else elseContent">
+                  <li class="slide has-sub " *ngIf="firstlayer.children">
+                    <a class="side-menu__item {{firstlayer.active ? 'active' : ''}}"
+                    (click)="toggleNavActive(firstlayer)"
+                    >
+                      <span class="side-menu__label">{{firstlayer.title}}</span>
+                      <i class="fe fe-chevron-down side-menu__angle"></i>
+                    </a>
+                    <ul class="slide-menu child1 mega-slide-menu-onefr  without-icon"
+                    [ngClass]="{open: firstlayer.active}"  >
+                      <div *ngIf="firstlayer.type == 'sub' ; else megaMenu"
+
+                      >
+                        <li class="slide" *ngFor="let child1 of firstlayer.children">
+                          <a routerLink="{{child1.path}}" class="side-menu__item "
+                          (click)="toggleNavActive(child1)"
+                          [ngClass]="{active: child1.active}"
+                          routerLinkActive="active"
+                       >
+
+                       <i class="bi {{child1.icon}} "></i>
+                            <span class="fw-500 tx-15">{{child1.title}}</span>
+
+                          </a>
+                        </li>
+                      </div>
+                    </ul>
+
+                    <ng-template #megaMenu>
+                      <li class="mega-menu-threefr">
+                        <div *ngFor="let child2 of firstlayer.children" >
+
+                          <div class="" >
+                            <ul >
+                              <li>
+
+                                <p class="mb-3 d-flex align-items-center menu-label">
+                                  <i class="bi {{child2.children[0].menuicon}} tx-primary tx-18 me-2"></i>
+                                  <span class="tx-14 tx-primary">{{child2.children[0].menutitle}}</span>
+                                </p>
+                              </li>
+
+                              <li class="slide" *ngFor="let child3 of child2.children">
+                                <a routerLink="{{child3.path}}" class="side-menu__item"
+                                (click)="toggleNavActive(child3)"
+                                [ngClass]="{ 'active': child3.active }"
+                                     routerLinkActive="active"
+
+                               >
+                                  <div class="d-lg-flex align-items-start">
+                                    <div class="me-3">
+                                      <span class="avatar header__dropavatar mb-2 bg-{{child3.bgcolor1}}-transparent rounded-circle">
+                                        <i class="bi {{child3.icon}} me-0 tx-{{child3.bgcolor}}"></i>
+                                      </span>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                      <h6 class="d-block mb-1">{{child3.title}}</h6>
+                                      <span class="tx-default tx-14">{{child3.titledescription}}</span>
+                                    </div>
+                                  </div>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+
+                        </div>
+                      </li>
+                    </ng-template>
+                    <ul
+                    class="slide-menu mega-slide-menu"
+                    *ngIf="firstlayer.children && firstlayer.type === 'mega-menu'"
+                    [ngClass]="{ active: firstlayer.selected }"
+                  >
+                    <div class="mega-menu">
+                      <div *ngFor="let childrenItem of firstlayer.children">
+                        <ul>
+                          <li *ngFor="let Items of childrenItem.items"
+                          [ngClass]="{ 'is-expanded': childrenItem.active }">
+                            <a  [routerLink]="
+                            !Items.type ? null : [Items.path]
+                          "
+                          [ngClass]="{ active: Items.active }"
+                          *ngIf="Items.type === 'link'" class="slide-item"> {{Items.title}}</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </ul>
+                  </li>
+                </div>
+                <ng-template #elseContent>
+                  <li class="slide">
+                    <a href="https://themes.spruko.com/customer/index.php?systpl=hostma-hosting"  target="_blank" class="side-menu__item" >
+                      <span class="side-menu__label">{{firstlayer.menutitle}}</span>
+                    </a>
+                  </li>
+                </ng-template>
+              </li>
+
+            </ul>
+              <div class="d-xl-flex d-lg-none d-grid gap-2 text-center">
+                  <a routerLink="/pages/registration-style1" class="btn btn-secondary min-w-fit-content">Register</a>
+                  <a routerLink="/pages/login-style1" class="btn btn-outline-light login-btn min-w-fit-content">Login</a>
+              </div>
+
+          </nav>
+          <!-- End::nav -->
+
+      </div>
+      <!-- End::main-sidebar -->
+
+  </aside>
+  <!-- End::app-sidebar -->
+</div>
+
+
+

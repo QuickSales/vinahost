@@ -1,0 +1,26 @@
+
+@media (max-width: 991.9px) {
+    .sidemenu-logo{
+        display: none;
+    }
+
+  .sub-slide-menu.open,
+  .slide-menu.open{
+    display: block;
+  }
+  }
+  @media (min-width: 992px){
+    .slide.has-sub .slide-menu .open{
+      display: block !important;
+      transition: all 0.5s ease;
+    }
+  }
+//   @media (max-width: 991.98px){
+
+//     [toggled=close] app-sidebar {
+//     inset-inline-start: -19rem;
+// }
+// [toggled=open] .app-sidebar {
+//   inset-inline-start: 0rem;
+// }
+  // }

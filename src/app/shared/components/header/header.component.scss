@@ -1,0 +1,8 @@
+@media (max-width: 991px){
+.category-dropdown .main-dropdown.active {
+    display: none;
+}
+}
+.categories-dropdowns li:hover>ul {
+  display: block;
+}

@@ -1,0 +1,34 @@
+<!-- Page -->
+<app-switcher></app-switcher>
+
+<div class="page">
+  <!-- main-content -->
+  <!-- <div class="page-main"> -->
+
+  <!-- main-header -->
+  <div class="head_menu_container">
+    <app-header></app-header>
+
+    <app-sidebar appHoverEffectSidebar ></app-sidebar>
+    <div class="jumps-prevent" style="padding-top: 0px"></div>
+
+    <!-- <div class="jumps-prevent" style="padding-top: 69px;"></div> -->
+  </div>
+  <div class="main-content app-content" (click)="sidebarClose('close')">
+    <!-- // contetnt  -->
+    <router-outlet> </router-outlet>
+  </div>
+  <!-- </div> -->
+  <app-footer></app-footer>
+  <!-- /main-content -->
+
+</div>
+<app-tab-to-top></app-tab-to-top>
+<!-- Footer opened -->
+
+<!-- Footer closed -->
+<app-cookie></app-cookie>
+
+<!-- </div> -->
+<!-- End Page -->
+

@@ -1,0 +1,187 @@
+
+
+<!-- Start Switcher-Icon -->
+<div class="">
+    <a class="switcher-icon" id="switcherIconBtn" (click)="open(content)" role="button" data-bs-toggle="offcanvas"
+        aria-controls="switcher-canvas">
+        <i class="fa fa-cog fa-spin"></i>
+    </a>
+</div>
+<!-- End Switcher-Icon -->
+
+
+<ng-template #content let-offcanvas>
+
+    <div class="offcanvas-header border-bottom">
+
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Switcher</h5>
+        <button type="button" class="btn btn-sm btn-icon btn-light tx-primary" aria-label="Close"
+            (click)="offcanvas.dismiss('Cross click')"><i class="fe fe-x fs-18"></i></button>
+    </div>
+    <div class="offcanvas-body mt-3">
+
+
+
+        <div class="">
+
+            <p class="switcher-style-head">Theme Color Mode:</p>
+            <div class="row switcher-style">
+                <div class="col-4">
+                    <div class="form-check switch-select">
+                        <label class="form-check-label" for="switcher-light-theme">
+                            Light
+                        </label>
+                        <input class="form-check-input" type="radio" name="theme-style" id="switcher-light-theme"
+                            (click)="themeChange('light')" checked>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-check switch-select">
+                        <label class="form-check-label" for="switcher-dark-theme">
+                            Dark
+                        </label>
+                          <input *ngIf="localDark['hostma-theme-mode']!='light' && localDark['hostma-theme-mode'] ; else elsepart" class="form-check-input" type="radio" name="theme-style" id="switcher-dark-theme"
+                            (click)="themeChange('dark')" checked>
+                            <ng-template #elsepart>
+                              <input  class="form-check-input" type="radio" name="theme-style" id="switcher-dark-theme"
+                            (click)="themeChange('dark')" >
+                            </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <p class="switcher-style-head">Directions:</p>
+            <div class="row switcher-style">
+                <div class="col-4">
+                    <div class="form-check switch-select">
+                        <label class="form-check-label" for="switcher-ltr">
+                            LTR
+                        </label>
+                        <input  class="form-check-input" type="radio" name="direction" id="switcher-ltr"
+                            (click)="open(content); DirectionsChange('ltr')" [checked]="localRtl['hostma-dir-mode']!='rtl'">
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-check switch-select">
+                        <label class="form-check-label" for="switcher-rtl">
+                            RTL
+                        </label>
+                        <input class="form-check-input" type="radio" name="direction" id="switcher-rtl"
+                            (click)="open(content); DirectionsChange('rtl')" checked>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <p class="switcher-style-head">Layout Width Styles:</p>
+            <div class="row switcher-style">
+                <div class="col-6 col-xl-4">
+                    <div class="form-check switch-select">
+                        <label class="form-check-label" for="switcher-full-width">
+                            Full Width
+                        </label>
+                        <input class="form-check-input" type="radio" name="layout-width" id="switcher-full-width"
+                            (click)="widthChange('fullWidth')" [checked]="localBoxed['hostma-width-mode']!='boxed'">
+                    </div>
+                </div>
+                <div class="col-6 col-xl-4">
+                    <div class="form-check switch-select">
+                        <label class="form-check-label" for="switcher-boxed">
+                            Boxed
+                        </label>
+                        <input class="form-check-input" type="radio" name="layout-width" id="switcher-boxed"
+                        (click)="widthChange('boxed')" checked >
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="theme-colors">
+            <p class="switcher-style-head">Theme Primary:</p>
+            <div class="d-flex align-items-center switcher-style">
+                <div class="form-check switch-select me-3">
+                    <input class="form-check-input color-input color-primary-1" type="radio" name="theme-primary"
+                        id="switcher-primary" (click)="Primary('--primary-rgb:20, 87, 230;')">
+                </div>
+                <div class="form-check switch-select me-3">
+                    <input class="form-check-input color-input color-primary-2" type="radio" name="theme-primary"
+                        id="switcher-primary1" (click)="Primary('--primary-rgb:16, 173, 231;')">
+                </div>
+                <div class="form-check switch-select me-3">
+                    <input class="form-check-input color-input color-primary-3" type="radio" name="theme-primary"
+                        id="switcher-primary2" (click)="Primary('--primary-rgb: 125, 172, 48;')">
+                </div>
+                <div class="form-check switch-select me-3">
+                    <input class="form-check-input color-input color-primary-4" type="radio" name="theme-primary"
+                        id="switcher-primary3" (click)="Primary('--primary-rgb: 209, 68, 141;')">
+                </div>
+                <div class="form-check switch-select me-3">
+                    <input class="form-check-input color-input color-primary-5" type="radio" name="theme-primary"
+                        id="switcher-primary4" (click)="Primary('--primary-rgb:  108, 62, 179;')">
+                </div>
+                <div class="form-check switch-select me-3 ps-0 mt-1 color-primary-light">
+                    <div class="theme-container-primary"></div>
+                    <div class="pickr-container-primary"></div>
+                    <input class="color-primary-dark" id="darkPrimaryColorID" data-id="bg-color" data-id1="bg-hover"
+                        data-id2="bg-border" data-id3="primary" data-id8="transparentcolor" [style.background]='color1'
+                        [cpAlphaChannel]="'disabled'" [cpOutputFormat]="'hex'" [(colorPicker)]="color1"
+                        (cpSliderDragEnd)="mychange($event,'light')" />
+                    <!-- <input type="color"  (change)="mychange($event)" > -->
+                </div>
+            </div>
+        </div>
+        <div class="theme-colors">
+            <p class="switcher-style-head">Theme Background:</p>
+            <div class="d-flex align-items-center switcher-style">
+                <div class="form-check switch-select me-3">
+                    <input class="form-check-input color-input color-bg-1" type="radio" name="theme-background"
+                        id="switcher-background" (click)="background('--body-bg-rgb:  50, 62, 93;','dark')" checked>
+                </div>
+                <div class="form-check switch-select me-3">
+                    <input class="form-check-input color-input color-bg-2" type="radio" name="theme-background"
+                        id="switcher-background1" (click)="background('--body-bg-rgb:   81, 93, 50;','dark')">
+                </div>
+                <div class="form-check switch-select me-3">
+                    <input class="form-check-input color-input color-bg-3" type="radio" name="theme-background"
+                        id="switcher-background2" (click)="background('--body-bg-rgb:   79, 50, 93;','dark')">
+                </div>
+                <div class="form-check switch-select me-3">
+                    <input class="form-check-input color-input color-bg-4" type="radio" name="theme-background"
+                        id="switcher-background3" (click)="background('--body-bg-rgb:   50, 87, 93;','dark')">
+                </div>
+                <div class="form-check switch-select me-3">
+                    <input class="form-check-input color-input color-bg-5" type="radio" name="theme-background"
+                        id="switcher-background4" (click)="background('--body-bg-rgb:   93, 50, 50;','dark')">
+                </div>
+                <div class="form-check switch-select me-3 ps-0 mt-1 color-bg-transparent">
+                    <div class="theme-container-background"></div>
+                    <div class="pickr-container-background"></div>
+                    <input class="dark" id="darkBgID" [style.background]="color1" [cpAlphaChannel]="'disabled'"
+                        [cpOutputFormat]="'hex'" [(colorPicker)]="color1"
+                        (cpSliderDragEnd)="dynamicDarkBg($event,'dark')">
+
+                </div>
+            </div>
+        </div>
+        <div class="m-3 mt-4">
+            <div class="switcher-style bg-light">
+                <h6 class="text-start"><span class="tx-primary">WHMCS - Latest Version</span> </h6>
+                <a href="https://themes.spruko.com/customer/index.php?systpl=hostma-hosting"
+                    class="mb-3 tx-secondary">WHMCS Demo<i class="fe fe-arrow-right ms-1"></i></a>
+
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between canvas-footer">
+            <button type="submit" id="reset-all" class="btn btn-danger" (click)="reset()">Reset</button>
+        </div>
+
+    </div>
+</ng-template>
+
+
+<!-- End Switcher -->
